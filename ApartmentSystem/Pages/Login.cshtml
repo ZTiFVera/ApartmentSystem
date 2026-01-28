@@ -1,0 +1,75 @@
+﻿@page "/"
+@model ApartmentSystem.Pages.LoginModel
+@{
+    Layout = "~/Pages/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Login";
+}
+
+ 
+ 
+
+<div class="login-form-wrapper">
+    <form method="post" class="needs-validation"novalidate>
+            @Html.AntiForgeryToken()
+        <!-- Username field -->
+
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="Users.Username" class="form-label">USERNAME</label>
+            <input asp-for="Users.Username" class="form-control form-input" placeholder="Enter your username" />
+            <span asp-validation-for="Users.Username" class="text-danger form-error"></span>
+        </div>
+
+        <!-- Password field -->
+        <div class="form-group">
+            <label asp-for="Users.Password" class="form-label">PASSWORD</label>
+            <input asp-for="Users.Password" type="password" class="form-control form-input" placeholder="Enter your password" />
+            <span asp-validation-for="Users.Password" class="text-danger form-error"></span>
+        </div>
+
+      @*   <!-- Remember me checkbox -->
+        <div class="form-group checkbox-group">
+            <div class="form-check">
+                <input asp-for="Users.RememberMe" class="form-check-input" type="checkbox" />
+                <label asp-for="Users.RememberMe" class="form-check-label">Remember me</label>
+            </div>
+        </div> *@
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-login">
+            <span class="btn-text">SIGN IN</span>
+            <span class="btn-icon">→</span>
+        </button>
+
+        <!-- Divider -->
+        <div class="divider">
+            <span>or</span>
+        </div>
+
+        <!-- Links -->
+        <div class="login-links">
+            <a href="#" class="link-secondary">Forgot Password?</a>
+            <span class="link-separator">•</span>
+            <a href="#" class="link-secondary">Create Account</a>
+        </div>
+    </form>
+
+    <!-- Additional info -->
+    <div class="login-footer">
+        <p class="footer-text">© 2026 NEZTAR GAZE. All rights reserved.</p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Add animation to form on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach((group, index) => {
+                group.style.animationDelay = (index * 0.1) + 's';
+                group.classList.add('animate-in');
+            });
+        });
+    </script>
+}

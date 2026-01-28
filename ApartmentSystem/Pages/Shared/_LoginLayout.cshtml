@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="login-wrapper">
+        <!-- Background elements -->
+        <div class="background-gradient"></div>
+        <div class="grid-overlay"></div>
+
+        <div class="login-container">
+            <!-- Branding -->
+            <div class="login-header">
+                <h1 class="brand-name">NEZTAR</h1>
+                <p class="brand-tagline">Urban Culture</p>
+            </div>
+
+            <!-- Main content -->
+            @RenderBody()
+        </div>
+
+        <!-- Decorative elements -->
+        <div class="accent-shape accent-shape-1"></div>
+        <div class="accent-shape accent-shape-2"></div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

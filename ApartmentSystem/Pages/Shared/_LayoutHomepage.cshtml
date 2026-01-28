@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ApartmentSystem.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-lg">
+                <a class="navbar-brand navbar-brand-custom" asp-page="/Index">NESTAR GAZE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-link-custom dropdown-toggle" id="newDropdown" data-bs-toggle="dropdown">New</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/New">Just In</a></li>
+                                <li><a class="dropdown-item" asp-page="/Shop">All Products</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-link-custom dropdown-toggle" data-bs-toggle="dropdown">Shop</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/Shop">All Products</a></li>
+                                <li><a class="dropdown-item" asp-page="/Hoodies">Hoodies</a></li>
+                                <li><a class="dropdown-item" asp-page="/Tees">Graphic Tees</a></li>
+                                <li><a class="dropdown-item" asp-page="/Pants">Pants</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom" asp-page="/Sale">Sale</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="ms-auto d-flex gap-3 align-items-center navbar-icons">
+                    <div class="search-bar-custom">
+                        <input type="text" id="searchInput" placeholder="Search products..." onkeyup="liveSearch()">
+                        <i class="fas fa-search"></i>
+                    </div>
+
+                    <button class="icon-btn-custom" title="Wishlist">
+                        <i class="far fa-heart"></i>
+                        <span class="badge bg-danger" id="wishlistCount" style="display:none;">0</span>
+                    </button>
+
+                    <button class="icon-btn-custom" id="cartBtn" onclick="toggleCart()" title="Cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </button>
+
+                    <a class="btn btn-link" asp-page="/Login">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content text-center">
+            <h1>Urban Culture</h1>
+            <p>Premium Streetwear for the Bold</p>
+            <a asp-page="/Shop" class="btn-hero btn-primary-custom">Shop New</a>
+            <a asp-page="/New" class="btn-hero btn-secondary-custom">Explore</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <!-- Page-specific content goes here -->
+        </main>
+    </div>
+
+    <footer>
+        <div class="container-lg">
+            <!-- footer content -->
+            <div class="footer-bottom">
+                <div>&copy; 2025 NESTAR GAZE. All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)

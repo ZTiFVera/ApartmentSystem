@@ -1,0 +1,188 @@
+﻿@page "/Index"
+@model IndexModel
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home page";
+}
+
+<body>
+
+    <!-- Search Dropdown -->
+    <div class="search-dropdown" id="searchDropdown" style="display:none;"></div>
+
+
+
+    <!-- Dual Banner -->
+    <div class="dual-banner">
+        <div class="banner-item" onclick="location.href='pages/hoodies.html'" style=" margin-top: 40px">
+            <img class="img-hover" src="images/hod back.jpg" alt="Hoodies Hover">
+            <div class="banner-overlay">
+                <h2>Hoodies</h2>
+                <p>Premium comfort collection</p>
+            </div>
+        </div>
+
+        <div class="banner-item" onclick="location.href='pages/tees.html'" style=" margin-top:40px">
+            <img class="img-hover" src="images/UFC TEES MD BACK.webp" alt="Graphics Hover">
+            <div class="banner-overlay">
+                <h2>Graphic Tees</h2>
+                <p>Express your style</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collections Section -->
+    <section class="collections-section">
+        <div class="container-lg">
+            <h2 class="section-title">Featured Collections</h2>
+
+            <div class="collection-grid">
+
+                <div class="collection-item" onclick="location.href='pages/hoodies.html'">
+                    <img class="img-default" src="images/hod front.webp" alt="Hoodies">
+                    <div class="collection-overlay">
+                        <h3>Premium Hoodies</h3>
+                        <p>Elevated Comfort</p>
+                    </div>
+                </div>
+
+                <div class="collection-item" onclick="location.href='pages/tees.html'">
+                    <img class="img-default" src="images/UFC TEES FRONT.webp" alt="Graphics">
+                    <div class="collection-overlay">
+                        <h3>Graphic Tees</h3>
+                        <p>Bold Statements</p>
+                    </div>
+                </div>
+
+                <div class="collection-item" onclick="location.href='pages/shop.html'">
+                    <img src="images/explore.jpg" alt="Shop All">
+                    <div class="collection-overlay">
+                        <h3>Shop All</h3>
+                        <p>Explore Everything</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container-lg">
+            <h2 class="section-title">Latest Drops</h2>
+            <div class="product-grid" id="productGrid"></div>
+
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="pages/shop.html" class="btn-hero btn-primary-custom">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed Section -->
+    <section class="recently-viewed" id="recentlyViewedSection" style="display:none;">
+        <div class="container-lg">
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+                <h2 class="recently-viewed-title">Recently Viewed</h2>
+                <button onclick="clearRecentlyViewed()" style="background:none;border:none;font-size:13px;text-decoration:underline;cursor:pointer;color:var(--text-gray);">
+                    Clear History
+                </button>
+            </div>
+
+            <div class="product-grid" id="recentlyViewedGrid"></div>
+        </div>
+    </section>
+
+    <!-- Promo Strip -->
+    <section class="promo-strip">
+        <div class="container-lg">
+            <h2>End of Season Sale</h2>
+            <p>Up to 60% off select items. Limited time only.</p>
+            <a href="pages/sale.html" class="btn-hero btn-primary-custom">Shop Sale</a>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h4>Shopping Cart</h4>
+            <button onclick="toggleCart()" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total:</strong> <span id="cartTotal">₱0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Checkout</button>
+            <button class="btn-continue" onclick="toggleCart()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h4>Wishlist</h4>
+            <button onclick="closeAllSidebars()" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <p class="empty-wishlist">Your wishlist is empty</p>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-notification" id="notification"></div>
+
+    <!-- Modal -->
+    <div id="productModal" class="product-modal"></div>
+
+
+
+
+    @*  <!-- Backdrop -->
+    <div class="sidebar-backdrop" id="backdrop" onclick="closeAllSidebars()"></div>
+
+    <!-- Replace the bottom script section of index.html with this -->
+    <!-- JS Scripts FIXED paths -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/products.js"></script>
+    <script src="js/product-detail.js"></script>
+    <script src="js/recently-viewed.js"></script>
+    <script src="js/related-products.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/wishlist-buttons.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/category-pages.js"></script>
+    <script src="js/main.js"></script> *@
+
+    @*  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const recentlyViewed = JSON.parse(localStorage.getItem('nestarGazeRecentlyViewed') || '[]');
+                const section = document.getElementById('recentlyViewedSection');
+
+                if (recentlyViewed.length > 0) {
+                    section.style.display = 'block';
+                    renderRecentlyViewed();
+                }
+            }, 500);
+        });
+
+        // ✅ FIX: Prevent heart icon clicks from triggering product card clicks
+        document.addEventListener('click', function(e) {
+            // If clicking on wishlist button or its icon, stop propagation
+            if (e.target.closest('.product-wishlist-btn')) {
+                e.stopPropagation();
+            }
+        }, true); // Use capture phase
+    </script> *@
+
+</body>
+</html>
