@@ -7,7 +7,7 @@ namespace ApartmentSystem.Pages
     public class LoginModel : PageModel
     {
         [BindProperty]
-        public Users Users { get; set; } = new Users();
+        public User Users { get; set; } = new User();
 
         public IActionResult OnPost()
         {
