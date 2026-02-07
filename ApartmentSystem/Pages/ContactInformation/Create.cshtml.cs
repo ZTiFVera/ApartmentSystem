@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.Registration
+namespace ApartmentSystem.Pages.ContactInformation
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace ApartmentSystem.Pages.Registration
         }
 
         [BindProperty]
-        public User User { get; set; } = default!;
+        public ContactInfo ContactInfo { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace ApartmentSystem.Pages.Registration
                 return Page();
             }
 
-            _context.User.Add(User);
+            _context.ContactInfo.Add(ContactInfo);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

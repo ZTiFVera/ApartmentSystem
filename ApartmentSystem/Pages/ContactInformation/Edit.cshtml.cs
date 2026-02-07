@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.Registration
+namespace ApartmentSystem.Pages.ContactInformation
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace ApartmentSystem.Pages.Registration
         }
 
         [BindProperty]
-        public User User { get; set; } = default!;
+        public ContactInfo ContactInfo { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,12 @@ namespace ApartmentSystem.Pages.Registration
                 return NotFound();
             }
 
-            var user =  await _context.User.FirstOrDefaultAsync(m => m.UserId == id);
-            if (user == null)
+            var contactinfo =  await _context.ContactInfo.FirstOrDefaultAsync(m => m.Id == id);
+            if (contactinfo == null)
             {
                 return NotFound();
             }
-            User = user;
+            ContactInfo = contactinfo;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace ApartmentSystem.Pages.Registration
                 return Page();
             }
 
-            _context.Attach(User).State = EntityState.Modified;
+            _context.Attach(ContactInfo).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace ApartmentSystem.Pages.Registration
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(User.UserId))
+                if (!ContactInfoExists(ContactInfo.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace ApartmentSystem.Pages.Registration
             return RedirectToPage("./Index");
         }
 
-        private bool UserExists(int id)
+        private bool ContactInfoExists(int id)
         {
-            return _context.User.Any(e => e.UserId == id);
+            return _context.ContactInfo.Any(e => e.Id == id);
         }
     }
 }

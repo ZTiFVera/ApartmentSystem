@@ -1,13 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿ 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
+ 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+ 
 builder.Services.AddDbContext<ApartmentSystemContext>(options =>
+ 
     options.UseSqlServer(builder.Configuration.GetConnectionString("ApartmentSystemContext") ?? throw new InvalidOperationException("Connection string 'ApartmentSystemContext' not found.")));
-
+ 
+     
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.Products
+namespace ApartmentSystem.Pages.RegisterUser
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace ApartmentSystem.Pages.Products
         }
 
         [BindProperty]
-        public Product Product { get; set; } = default!;
+        public Registration Registration { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,12 @@ namespace ApartmentSystem.Pages.Products
                 return NotFound();
             }
 
-            var product =  await _context.Product.FirstOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
+            var registration =  await _context.Registration.FirstOrDefaultAsync(m => m.RegId == id);
+            if (registration == null)
             {
                 return NotFound();
             }
-            Product = product;
+            Registration = registration;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace ApartmentSystem.Pages.Products
                 return Page();
             }
 
-            _context.Attach(Product).State = EntityState.Modified;
+            _context.Attach(Registration).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace ApartmentSystem.Pages.Products
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(Product.ProductId))
+                if (!RegistrationExists(Registration.RegId))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace ApartmentSystem.Pages.Products
             return RedirectToPage("./Index");
         }
 
-        private bool ProductExists(int id)
+        private bool RegistrationExists(int id)
         {
-            return _context.Product.Any(e => e.ProductId == id);
+            return _context.Registration.Any(e => e.RegId == id);
         }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.Products
+namespace ApartmentSystem.Pages.ContactInformation
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace ApartmentSystem.Pages.Products
         }
 
         [BindProperty]
-        public Product Product { get; set; } = default!;
+        public ContactInfo ContactInfo { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace ApartmentSystem.Pages.Products
                 return NotFound();
             }
 
-            var product = await _context.Product.FirstOrDefaultAsync(m => m.ProductId == id);
+            var contactinfo = await _context.ContactInfo.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (product == null)
+            if (contactinfo == null)
             {
                 return NotFound();
             }
             else
             {
-                Product = product;
+                ContactInfo = contactinfo;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace ApartmentSystem.Pages.Products
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
-            if (product != null)
+            var contactinfo = await _context.ContactInfo.FindAsync(id);
+            if (contactinfo != null)
             {
-                Product = product;
-                _context.Product.Remove(Product);
+                ContactInfo = contactinfo;
+                _context.ContactInfo.Remove(ContactInfo);
                 await _context.SaveChangesAsync();
             }
 

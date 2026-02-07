@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.Products
+namespace ApartmentSystem.Pages.RegisterUser
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace ApartmentSystem.Pages.Products
         }
 
         [BindProperty]
-        public Product Product { get; set; } = default!;
+        public Registration Registration { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace ApartmentSystem.Pages.Products
                 return Page();
             }
 
-            _context.Product.Add(Product);
+            _context.Registration.Add(Registration);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

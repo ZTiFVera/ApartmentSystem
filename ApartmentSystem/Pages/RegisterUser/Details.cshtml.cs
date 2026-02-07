@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.Products
+namespace ApartmentSystem.Pages.RegisterUser
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace ApartmentSystem.Pages.Products
             _context = context;
         }
 
-        public Product Product { get; set; } = default!;
+        public Registration Registration { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,14 +28,14 @@ namespace ApartmentSystem.Pages.Products
                 return NotFound();
             }
 
-            var product = await _context.Product.FirstOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
+            var registration = await _context.Registration.FirstOrDefaultAsync(m => m.RegId == id);
+            if (registration == null)
             {
                 return NotFound();
             }
             else
             {
-                Product = product;
+                Registration = registration;
             }
             return Page();
         }
