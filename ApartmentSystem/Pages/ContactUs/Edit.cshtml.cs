@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.ContactInformation
+namespace ApartmentSystem.Pages.ContactUs
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace ApartmentSystem.Pages.ContactInformation
         }
 
         [BindProperty]
-        public ContactInfo ContactInfo { get; set; } = default!;
+        public ContactUsInformation ContactUsInformation { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,12 @@ namespace ApartmentSystem.Pages.ContactInformation
                 return NotFound();
             }
 
-            var contactinfo =  await _context.ContactInfo.FirstOrDefaultAsync(m => m.Id == id);
-            if (contactinfo == null)
+            var contactusinformation =  await _context.ContactUsInformation.FirstOrDefaultAsync(m => m.Id == id);
+            if (contactusinformation == null)
             {
                 return NotFound();
             }
-            ContactInfo = contactinfo;
+            ContactUsInformation = contactusinformation;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace ApartmentSystem.Pages.ContactInformation
                 return Page();
             }
 
-            _context.Attach(ContactInfo).State = EntityState.Modified;
+            _context.Attach(ContactUsInformation).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace ApartmentSystem.Pages.ContactInformation
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ContactInfoExists(ContactInfo.Id))
+                if (!ContactUsInformationExists(ContactUsInformation.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace ApartmentSystem.Pages.ContactInformation
             return RedirectToPage("./Index");
         }
 
-        private bool ContactInfoExists(int id)
+        private bool ContactUsInformationExists(int id)
         {
-            return _context.ContactInfo.Any(e => e.Id == id);
+            return _context.ContactUsInformation.Any(e => e.Id == id);
         }
     }
 }

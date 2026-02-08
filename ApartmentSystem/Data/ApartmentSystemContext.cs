@@ -14,8 +14,7 @@ namespace ApartmentSystem.Data
         {
         }
 
-       
-        public DbSet<ApartmentSystem.Models.ContactInfo> ContactInfo { get; set; } = default!;
-        public DbSet<ApartmentSystem.Models.Registration> Registration { get; set; } = default!;
+        public DbSet<ApartmentSystem.Models.PersonalInformation> PersonalInformation { get; set; } = default!;
+        public DbSet<ApartmentSystem.Models.ContactUsInformation> ContactUsInformation { get; set; } = default!;
     }
 }

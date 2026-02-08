@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.RegisterUser
+namespace ApartmentSystem.Pages.UserInfo
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace ApartmentSystem.Pages.RegisterUser
         }
 
         [BindProperty]
-        public Registration Registration { get; set; } = default!;
+        public PersonalInformation PersonalInformation { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace ApartmentSystem.Pages.RegisterUser
                 return NotFound();
             }
 
-            var registration = await _context.Registration.FirstOrDefaultAsync(m => m.RegId == id);
+            var personalinformation = await _context.PersonalInformation.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (registration == null)
+            if (personalinformation == null)
             {
                 return NotFound();
             }
             else
             {
-                Registration = registration;
+                PersonalInformation = personalinformation;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace ApartmentSystem.Pages.RegisterUser
                 return NotFound();
             }
 
-            var registration = await _context.Registration.FindAsync(id);
-            if (registration != null)
+            var personalinformation = await _context.PersonalInformation.FindAsync(id);
+            if (personalinformation != null)
             {
-                Registration = registration;
-                _context.Registration.Remove(Registration);
+                PersonalInformation = personalinformation;
+                _context.PersonalInformation.Remove(PersonalInformation);
                 await _context.SaveChangesAsync();
             }
 

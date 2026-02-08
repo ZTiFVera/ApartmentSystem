@@ -1,0 +1,101 @@
+﻿@page
+@model ApartmentSystem.Pages.UserInfo.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PersonalInformation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PersonalInformation.Id" />
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.FirstName" class="control-label"></label>
+                <input asp-for="PersonalInformation.FirstName" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.LastName" class="control-label"></label>
+                <input asp-for="PersonalInformation.LastName" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.Email" class="control-label"></label>
+                <input asp-for="PersonalInformation.Email" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.PhoneNumber" class="control-label"></label>
+                <input asp-for="PersonalInformation.PhoneNumber" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.DateOfBirth" class="control-label"></label>
+                <input asp-for="PersonalInformation.DateOfBirth" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.Gender" class="control-label"></label>
+                <input asp-for="PersonalInformation.Gender" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.Address" class="control-label"></label>
+                <input asp-for="PersonalInformation.Address" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.City" class="control-label"></label>
+                <input asp-for="PersonalInformation.City" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.Province" class="control-label"></label>
+                <input asp-for="PersonalInformation.Province" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.Province" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.PostalCode" class="control-label"></label>
+                <input asp-for="PersonalInformation.PostalCode" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PersonalInformation.Country" class="control-label"></label>
+                <input asp-for="PersonalInformation.Country" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PersonalInformation.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalInformation.Bio" class="control-label"></label>
+                <textarea asp-for="PersonalInformation.Bio" class="form-control" ></textarea>
+                <span asp-validation-for="PersonalInformation.Bio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

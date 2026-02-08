@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.ContactInformation
+namespace ApartmentSystem.Pages.ContactUs
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace ApartmentSystem.Pages.ContactInformation
             _context = context;
         }
 
-        public ContactInfo ContactInfo { get; set; } = default!;
+        public ContactUsInformation ContactUsInformation { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,14 +28,14 @@ namespace ApartmentSystem.Pages.ContactInformation
                 return NotFound();
             }
 
-            var contactinfo = await _context.ContactInfo.FirstOrDefaultAsync(m => m.Id == id);
-            if (contactinfo == null)
+            var contactusinformation = await _context.ContactUsInformation.FirstOrDefaultAsync(m => m.Id == id);
+            if (contactusinformation == null)
             {
                 return NotFound();
             }
             else
             {
-                ContactInfo = contactinfo;
+                ContactUsInformation = contactusinformation;
             }
             return Page();
         }

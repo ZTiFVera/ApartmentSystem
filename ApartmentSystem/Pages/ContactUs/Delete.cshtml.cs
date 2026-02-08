@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.ContactInformation
+namespace ApartmentSystem.Pages.ContactUs
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace ApartmentSystem.Pages.ContactInformation
         }
 
         [BindProperty]
-        public ContactInfo ContactInfo { get; set; } = default!;
+        public ContactUsInformation ContactUsInformation { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace ApartmentSystem.Pages.ContactInformation
                 return NotFound();
             }
 
-            var contactinfo = await _context.ContactInfo.FirstOrDefaultAsync(m => m.Id == id);
+            var contactusinformation = await _context.ContactUsInformation.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (contactinfo == null)
+            if (contactusinformation == null)
             {
                 return NotFound();
             }
             else
             {
-                ContactInfo = contactinfo;
+                ContactUsInformation = contactusinformation;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace ApartmentSystem.Pages.ContactInformation
                 return NotFound();
             }
 
-            var contactinfo = await _context.ContactInfo.FindAsync(id);
-            if (contactinfo != null)
+            var contactusinformation = await _context.ContactUsInformation.FindAsync(id);
+            if (contactusinformation != null)
             {
-                ContactInfo = contactinfo;
-                _context.ContactInfo.Remove(ContactInfo);
+                ContactUsInformation = contactusinformation;
+                _context.ContactUsInformation.Remove(ContactUsInformation);
                 await _context.SaveChangesAsync();
             }
 

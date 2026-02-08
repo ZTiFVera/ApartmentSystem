@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.RegisterUser
+namespace ApartmentSystem.Pages.UserInfo
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace ApartmentSystem.Pages.RegisterUser
         }
 
         [BindProperty]
-        public Registration Registration { get; set; } = default!;
+        public PersonalInformation PersonalInformation { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,12 @@ namespace ApartmentSystem.Pages.RegisterUser
                 return NotFound();
             }
 
-            var registration =  await _context.Registration.FirstOrDefaultAsync(m => m.RegId == id);
-            if (registration == null)
+            var personalinformation =  await _context.PersonalInformation.FirstOrDefaultAsync(m => m.Id == id);
+            if (personalinformation == null)
             {
                 return NotFound();
             }
-            Registration = registration;
+            PersonalInformation = personalinformation;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace ApartmentSystem.Pages.RegisterUser
                 return Page();
             }
 
-            _context.Attach(Registration).State = EntityState.Modified;
+            _context.Attach(PersonalInformation).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace ApartmentSystem.Pages.RegisterUser
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RegistrationExists(Registration.RegId))
+                if (!PersonalInformationExists(PersonalInformation.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace ApartmentSystem.Pages.RegisterUser
             return RedirectToPage("./Index");
         }
 
-        private bool RegistrationExists(int id)
+        private bool PersonalInformationExists(int id)
         {
-            return _context.Registration.Any(e => e.RegId == id);
+            return _context.PersonalInformation.Any(e => e.Id == id);
         }
     }
 }

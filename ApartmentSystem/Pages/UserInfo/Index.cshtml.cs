@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.ContactInformation
+namespace ApartmentSystem.Pages.UserInfo
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace ApartmentSystem.Pages.ContactInformation
             _context = context;
         }
 
-        public IList<ContactInfo> ContactInfo { get;set; } = default!;
+        public IList<PersonalInformation> PersonalInformation { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            ContactInfo = await _context.ContactInfo.ToListAsync();
+            PersonalInformation = await _context.PersonalInformation.ToListAsync();
         }
     }
 }

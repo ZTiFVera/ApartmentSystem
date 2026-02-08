@@ -1,5 +1,5 @@
 ﻿@page
-@model ApartmentSystem.Pages.ContactInformation.IndexModel
+@model ApartmentSystem.Pages.ContactUs.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,25 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ContactInfo[0].Name)
+                @Html.DisplayNameFor(model => model.ContactUsInformation[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ContactInfo[0].Email)
+                @Html.DisplayNameFor(model => model.ContactUsInformation[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ContactInfo[0].Phone)
+                @Html.DisplayNameFor(model => model.ContactUsInformation[0].Phone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ContactInfo[0].Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactInfo[0].Message)
+                @Html.DisplayNameFor(model => model.ContactUsInformation[0].Message)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ContactInfo) {
+@foreach (var item in Model.ContactUsInformation) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -42,9 +39,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Message)

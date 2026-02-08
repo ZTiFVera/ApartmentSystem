@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ApartmentSystem.Data;
 using ApartmentSystem.Models;
 
-namespace ApartmentSystem.Pages.RegisterUser
+namespace ApartmentSystem.Pages.ContactUs
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace ApartmentSystem.Pages.RegisterUser
             _context = context;
         }
 
-        public IList<Registration> Registration { get;set; } = default!;
+        public IList<ContactUsInformation> ContactUsInformation { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Registration = await _context.Registration.ToListAsync();
+            ContactUsInformation = await _context.ContactUsInformation.ToListAsync();
         }
     }
 }
